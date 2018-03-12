@@ -1,0 +1,52 @@
+<head>
+    <script src="/scripts/example.js"></script>
+    <link type="text/css" rel="stylesheet" href="/css/example.css">
+</head>
+<body>
+    <div class="softphone">
+        <iframe id="softphone" allow="camera *; microphone *" src="https://apps.mypurecloud.com/crm/index.html?crm=framework-local-secure&color=orange"></iframe>
+    </div>
+
+    <div class='content'>
+        <h1>PureCloud Embeddable Framework</h1>
+
+        <div class="actions">
+            <h3>Actions</h3>
+
+            <div class="action">
+                <h4 class="actionName">Click to Dial</h4>
+                <p>You can raise events from main application to automaticly place a call using the embeded client. <a id='clickToDial' >3172222222</a> </p>
+            </div>
+
+            <div class="action">
+                <h4 class="actionName">Add Association</h4>
+                <p>addAssociation allows you to update the picklist options in the call log view. The selected option will be sent back to the embeddable framework when processCallLog is raised.</p>
+                <textarea id="associationPayload" rows="4">{"type":"contact", "id":"1234", "text":"Weather Line", "select": true}</textarea>
+                <button id="addAssociation" >Send Data</button>
+            </div>
+
+            <div class="action">
+                <h4 class="actionName">Add Custom Attributes</h4>
+                <p>addCustomAttributes allow you to add additional information to the interaction. Example usage it to save the current state of the agents workspace and transfer the workspace to the new recieving agent.</p>
+                <textarea id="attributePayload" rows="4">{"interactionId":"1234-1234-1234-1234","attributes": {"exampleWorkspaceKey": "https://exampleworkspaceurl.com"}</textarea>
+                <button id="addAttribute">Send Data</button>
+            </div>
+        </div>
+
+        <div class="events">
+            <h3>Events</h3>
+
+            <div class="event">
+                    <h4 class="eventName">Screen Pop</h4>
+                    <p>The screenPop is raised for inbound alerting interactions</p>
+                    <textarea id="screenPopPayload" rows="5"></textarea>        
+            </div>
+
+            <div class="event">
+                    <h4 class="eventName">Process Call Log</h4>
+                    <p>The processCallLog is raised for for interactions when interaction state is updated and there are pending changes to the call log interface.</p>
+                    <textarea id="processCallLogPayLoad" rows="5"></textarea>
+            </div>
+        </div>
+    </div>
+</body>

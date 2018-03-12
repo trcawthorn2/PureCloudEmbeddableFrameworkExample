@@ -1,0 +1,14 @@
+{
+  "name": "purecloud-embeddable-framework",
+  "version": "0.0.0",
+  "description": "Example project that implments the PureCloud Embeddable Framwork",
+  "main": "example.html",
+  "author": "Genesys",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "~4.11.2",
+    "http-proxy": "~1.8.1",
+    "request": "~2.53.0"
+  },
+  "dependencies": {}
+}
