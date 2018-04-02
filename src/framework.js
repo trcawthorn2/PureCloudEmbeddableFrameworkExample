@@ -19,6 +19,21 @@ window.Framework = {
     },
 
     initialSetup: function () {
+        window.PureCloud.subscribe([
+            {
+                type: 'Interaction', 
+                callback: function (category, interaction) {
+                    window.parent.postMessage(JSON.stringify({type:"interactionSubscription", data:{category:category, interaction:interaction}}) , "*");
+                }  
+            },
+            {
+                type: 'UserAction', 
+                callback: function (category, data) {
+                    window.parent.postMessage(JSON.stringify({type:"userActionSubscription", data:{category:category, data:data}}) , "*");
+                }  
+            }
+        ]);
+
         window.addEventListener("message", function(event) {
             var message = JSON.parse(event.data);
             if(message){
@@ -47,5 +62,8 @@ window.Framework = {
         } else {
             onFailure();
         }
+    },
+    openCallLog: function(callLog){
+        window.parent.postMessage(JSON.stringify({type:"openCallLog" , data:{callLog:callLog}}) , "*");
     }
 };

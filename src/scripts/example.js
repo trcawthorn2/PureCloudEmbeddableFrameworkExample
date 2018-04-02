@@ -11,9 +11,14 @@ document.addEventListener('DOMContentLoaded',function(){
                 document.getElementById("screenPopPayload").value = event.data;
             } else if(message.type == "processCallLog"){
                 document.getElementById("processCallLogPayLoad").value = event.data;
+            } else if(message.type == "openCallLog"){
+                document.getElementById("openCallLogPayLoad").value = event.data;
+            } else if(message.type == "interactionSubscription"){
+                document.getElementById("interactionSubscriptionPayload").value = event.data;
+            } else if(message.type == "userActionSubscription"){
+                document.getElementById("userActionSubscriptionPayload").value = event.data;
             }
         }
-
     });
 
     function clickToDial() {

@@ -56,3 +56,19 @@ textarea {
 .event > p {
     margin-top: -15px;
 }
+
+.subscriptions {
+    margin: 10px;
+}
+
+.subscription {
+    margin: 10px;
+}
+
+.subscriptionName {
+    text-decoration: underline;
+}
+
+.subscription > p {
+    margin-top: -15px;
+}

@@ -4,7 +4,7 @@
 </head>
 <body>
     <div class="softphone">
-        <iframe id="softphone" allow="camera *; microphone *" src="https://apps.mypurecloud.com/crm/index.html?crm=framework-local-secure&color=orange"></iframe>
+        <iframe id="softphone" allow="camera *; microphone *" src="https://apps.mypurecloud.com/crm/index.html?crm=framework-local-secure&color=red"></iframe>
     </div>
 
     <div class='content'>
@@ -47,6 +47,29 @@
                     <p>The processCallLog is raised for for interactions when interaction state is updated and there are pending changes to the call log interface.</p>
                     <textarea id="processCallLogPayLoad" rows="5"></textarea>
             </div>
+
+            <div class="event">
+                <h4 class="eventName">Open Call Log</h4>
+                <p>The openCallLog is raised when the user requests the call log via the call log UI.</p>
+                <textarea id="openCallLogPayLoad" rows="5"></textarea>
         </div>
+        </div>
+
+        <div class="subscriptions">
+            <h3>Subscribe</h3>
+
+            <div class="subscription">
+                <h4 class="subscriptionName">Type: Interaction</h4>
+                <p>Subscribing for interaction events allow you to make smart desision based of the interactions life cycle.</p>
+                <textarea id="interactionSubscriptionPayload" rows="5"></textarea>        
+            </div>
+
+            <div class="subscription">
+                <h4 class="subscriptionName">Type: UserAction</h4>
+                <p>Subscribing for userAction events allow you align the agents ui outside of the embedable framework with their current task.</p>
+                <textarea id="userActionSubscriptionPayload" rows="5"></textarea>        
+            </div>
+        </div>
+
     </div>
 </body>
