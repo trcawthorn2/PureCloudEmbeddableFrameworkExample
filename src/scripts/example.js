@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded',function(){
     document.getElementById("clickToDial").addEventListener("click", clickToDial);
     document.getElementById("addAssociation").addEventListener("click", addAssociation);
     document.getElementById("addAttribute").addEventListener("click", addAttribute);
+    document.getElementById('addTransferContext').addEventListener("click", addTransferContext);
     
     window.addEventListener("message", function(event) {
         var message = JSON.parse(event.data);
@@ -42,6 +43,14 @@ document.addEventListener('DOMContentLoaded',function(){
         document.getElementById("softphone").contentWindow.postMessage(JSON.stringify({
             type: 'addAttribute',
             data: JSON.parse(document.getElementById("attributePayload").value)
+        }), "*");
+    }
+
+    function addTransferContext() {
+        console.log('process add Transfer Context');
+        document.getElementById("softphone").contentWindow.postMessage(JSON.stringify({
+            type: 'addTransferContext',
+            data: JSON.parse(document.getElementById("transferContextPayload").value)
         }), "*");
     }
 

@@ -4,7 +4,7 @@
 </head>
 <body>
     <div class="softphone">
-        <iframe id="softphone" allow="camera *; microphone *" src="https://apps.mypurecloud.com/crm/index.html?crm=framework-local-secure&color=red"></iframe>
+        <iframe id="softphone" allow="camera *; microphone *" src="https://apps.mypurecloud.com/crm/index.html?crm=framework-local-secure&color=teal"></iframe>
     </div>
 
     <div class='content'>
@@ -30,6 +30,13 @@
                 <p>addCustomAttributes allow you to add additional information to the interaction. Example usage it to save the current state of the agents workspace and transfer the workspace to the new recieving agent.</p>
                 <textarea id="attributePayload" rows="4">{"interactionId":"1234-1234-1234-1234","attributes": {"exampleWorkspaceKey": "https://exampleworkspaceurl.com"}</textarea>
                 <button id="addAttribute">Send Data</button>
+            </div>
+
+            <div class="action">
+                <h4 class="actionName">Add Transfer Context</h4>
+                <p>addTransferContext allows the agent to select additional information while performing a transfer.</p>
+                <textarea id="transferContextPayload" rows="4">{"name": "Case: 1234 - Broken Phone","attributes": {"PT_TransferContext": "1234"}}</textarea>
+                <button id="addTransferContext">Send Data</button>
             </div>
         </div>
 

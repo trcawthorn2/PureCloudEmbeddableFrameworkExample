@@ -7,11 +7,12 @@ window.Framework = {
             'mypurecloud.com.au': '',
             'mypurecloud.jp': ''
         },
-        customInteractionAttributes: ['PT_URLPop', 'PT_SearchValue'],
+        customInteractionAttributes: ['PT_URLPop', 'PT_SearchValue', 'PT_TransferContext'],
         settings: {
             embedWebRTCByDefault: true,
             hideWebRTCPopUpOption: false,
             enableCallLogs: true,
+            enableTransferContext: true,
             hideCallLogSubject: true,
             hideCallLogContact: false,
             hideCallLogRelation: false
@@ -43,14 +44,15 @@ window.Framework = {
                     window.PureCloud.addAssociation(message.data);
                 }else if(message.type == "addAttribute"){
                     window.PureCloud.addCustomAttributes(message.data);
+                }else if(message.type == "addTransferContext"){
+                    window.PureCloud.addTransferContext(message.data);
                 }
             }
 
         });
     },
-    screenPop: function (searchString, interaction , callback) {
-        window.parent.postMessage(JSON.stringify({type:"screenPop", data:{searchString:searchString, interactionId:interaction.id}}) , "*");
-        callback();
+    screenPop: function (searchString, interaction) {
+        window.parent.postMessage(JSON.stringify({type:"screenPop", data:{searchString:searchString, interactionId:interaction}}) , "*");
     },
     processCallLog: function (callLog, interaction, eventName, onSuccess, onFailure) {
         window.parent.postMessage(JSON.stringify({type:"processCallLog" , data:{callLog:callLog, interactionId:interaction.id, eventName:eventName}}) , "*");
