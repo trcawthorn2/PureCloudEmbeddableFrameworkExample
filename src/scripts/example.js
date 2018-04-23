@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded',function(){
     document.getElementById("addAssociation").addEventListener("click", addAssociation);
     document.getElementById("addAttribute").addEventListener("click", addAttribute);
     document.getElementById('addTransferContext').addEventListener("click", addTransferContext);
-    
+
     window.addEventListener("message", function(event) {
         var message = JSON.parse(event.data);
         if(message){
@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded',function(){
                 document.getElementById("interactionSubscriptionPayload").value = event.data;
             } else if(message.type == "userActionSubscription"){
                 document.getElementById("userActionSubscriptionPayload").value = event.data;
+            } else if(message.type == "contactSearch") {
+                document.getElementById("searchText").innerHTML = ": " + message.data.searchString;
+                sendContactSearch();
             }
         }
     });
@@ -51,6 +54,14 @@ document.addEventListener('DOMContentLoaded',function(){
         document.getElementById("softphone").contentWindow.postMessage(JSON.stringify({
             type: 'addTransferContext',
             data: JSON.parse(document.getElementById("transferContextPayload").value)
+        }), "*");
+    }
+
+    function sendContactSearch() {
+        console.log('process add Search Context');
+        document.getElementById("softphone").contentWindow.postMessage(JSON.stringify({
+            type: 'sendContactSearch',
+            data: JSON.parse(document.getElementById("contactSearchPayload").value)
         }), "*");
     }
 

@@ -1,3 +1,5 @@
+var contactSearchCallback;
+
 window.Framework = {
     config: {
         name:"testApp",
@@ -25,7 +27,7 @@ window.Framework = {
                 type: 'Interaction', 
                 callback: function (category, interaction) {
                     window.parent.postMessage(JSON.stringify({type:"interactionSubscription", data:{category:category, interaction:interaction}}) , "*");
-                }  
+                }
             },
             {
                 type: 'UserAction', 
@@ -46,6 +48,11 @@ window.Framework = {
                     window.PureCloud.addCustomAttributes(message.data);
                 }else if(message.type == "addTransferContext"){
                     window.PureCloud.addTransferContext(message.data);
+                }else if(message.type == "sendContactSearch"){
+                    console.error(message.data);
+                    if(contactSearchCallback) {
+                        contactSearchCallback(message.data);
+                    }
                 }
             }
 
@@ -65,7 +72,11 @@ window.Framework = {
             onFailure();
         }
     },
-    openCallLog: function(callLog){
-        window.parent.postMessage(JSON.stringify({type:"openCallLog" , data:{callLog:callLog}}) , "*");
+    openCallLog: function(callLog, interaction){
+        window.parent.postMessage(JSON.stringify({type:"openCallLog" , data:{callLog:callLog, interaction:interaction}}) , "*");
+    },
+    contactSearch: function(searchString, onSuccess, onFailure) {
+        contactSearchCallback = onSuccess;
+        window.parent.postMessage(JSON.stringify({type:"contactSearch" , data:{searchString:searchString}}) , "*");
     }
 };
