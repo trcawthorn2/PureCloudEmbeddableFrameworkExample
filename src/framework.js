@@ -27,7 +27,7 @@ window.Framework = {
                 type: 'Interaction', 
                 callback: function (category, interaction) {
                     window.parent.postMessage(JSON.stringify({type:"interactionSubscription", data:{category:category, interaction:interaction}}) , "*");
-                }
+                }  
             },
             {
                 type: 'UserAction', 
@@ -49,10 +49,13 @@ window.Framework = {
                 }else if(message.type == "addTransferContext"){
                     window.PureCloud.addTransferContext(message.data);
                 }else if(message.type == "sendContactSearch"){
-                    console.error(message.data);
                     if(contactSearchCallback) {
                         contactSearchCallback(message.data);
                     }
+                }else if(message.type == "updateUserStatus"){
+                    window.PureCloud.User.updateStatus(message.data);
+                }else if(message.type == "updateInteractionState"){
+                    window.PureCloud.Interaction.updateState(message.data);
                 }
             }
 
@@ -62,7 +65,7 @@ window.Framework = {
         window.parent.postMessage(JSON.stringify({type:"screenPop", data:{searchString:searchString, interactionId:interaction}}) , "*");
     },
     processCallLog: function (callLog, interaction, eventName, onSuccess, onFailure) {
-        window.parent.postMessage(JSON.stringify({type:"processCallLog" , data:{callLog:callLog, interactionId:interaction.id, eventName:eventName}}) , "*");
+        window.parent.postMessage(JSON.stringify({type:"processCallLog" , data:{callLog:callLog, interactionId:interaction, eventName:eventName}}) , "*");
         var success = true;
         if (success) {
             onSuccess({

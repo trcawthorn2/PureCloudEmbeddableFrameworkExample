@@ -72,3 +72,8 @@ textarea {
 .subscription > p {
     margin-top: -15px;
 }
+
+.callControl {
+    width: 100px;
+    overflow: hidden;
+}

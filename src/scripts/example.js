@@ -4,7 +4,11 @@ document.addEventListener('DOMContentLoaded',function(){
     document.getElementById("addAssociation").addEventListener("click", addAssociation);
     document.getElementById("addAttribute").addEventListener("click", addAttribute);
     document.getElementById('addTransferContext').addEventListener("click", addTransferContext);
-
+    document.getElementById('updateUserStatus').addEventListener("click", updateUserStatus);
+    document.getElementById('pickupInteraction').addEventListener("click", updateInteractionState);
+    document.getElementById('securePuaseInteraction').addEventListener("click", updateInteractionState);
+    document.getElementById('disconnectInteraction').addEventListener("click", updateInteractionState);
+    
     window.addEventListener("message", function(event) {
         var message = JSON.parse(event.data);
         if(message){
@@ -62,6 +66,33 @@ document.addEventListener('DOMContentLoaded',function(){
         document.getElementById("softphone").contentWindow.postMessage(JSON.stringify({
             type: 'sendContactSearch',
             data: JSON.parse(document.getElementById("contactSearchPayload").value)
+        }), "*");
+    }
+
+    function updateUserStatus() {
+        console.log('process user status update');
+        document.getElementById("softphone").contentWindow.postMessage(JSON.stringify({
+            type: 'updateUserStatus',
+            data: { id:document.getElementById("statusDropDown").value }
+        }), "*");
+    }
+
+    function updateInteractionState(event) {
+        console.log('process interaction state change');
+        var lastInteractionPayload = JSON.parse(document.getElementById("interactionSubscriptionPayload").value);
+        var interactionId;
+        if (lastInteractionPayload.data.interaction.old){
+            interactionId = lastInteractionPayload.data.interaction.old.id;
+        }else {
+            interactionId = lastInteractionPayload.data.interaction.id;
+        }
+        let payload = {
+            action: event.target.outerText,
+            id: interactionId
+        };
+        document.getElementById("softphone").contentWindow.postMessage(JSON.stringify({
+            type: 'updateInteractionState',
+            data: payload
         }), "*");
     }
 

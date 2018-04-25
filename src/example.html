@@ -4,7 +4,7 @@
 </head>
 <body>
     <div class="softphone">
-        <iframe id="softphone" allow="camera *; microphone *" src="https://apps.mypurecloud.com/crm/index.html?crm=framework-local-secure&color=dark"></iframe>
+        <iframe id="softphone" allow="camera *; microphone *" src="https://apps.mypurecloud.com/crm/index.html?crm=framework-local-secure&color=darkgrey"></iframe>
     </div>
 
     <div class='content'>
@@ -43,6 +43,23 @@
                 <h4 class="actionName">Contact Search Options <span id="searchText"></span></h4>
                 <p>contactSerach allows for additional contacts to be provided via the transfer ui</p>
                 <textarea id="contactSearchPayload" rows="4">[{"type": "external", "name": "Weather Line", "phone":[{number:"(317) 222-2222" label:"Cell"}]}]</textarea>
+            </div>
+            
+            <div class="action">
+                <h4 class="actionName">User Status Update</h4>
+                <p>User.updateStatus allows status management</p>
+                <select id='statusDropDown'>
+                    <option value="AVAILABLE">Available</option>
+                    <option value="AWAY">Away</option>
+                    <option value="ON_QUEUE">On Queue</option>
+                  </select>
+                <button id="updateUserStatus">Send Data</button>
+            </div>
+            
+            <div class="action">
+                <h4 class="actionName">Interaction State Update</h4>
+                <p>Interaction.updateState allows for updating of the interaction state, enableing deeper integration into pickup, disconnect, hold, mute, and secure pause.</p>
+                <button class='callControl' id="pickupInteraction">pickup</button><button class='callControl' id="securePuaseInteraction">securePause</button><button class='callControl' id="disconnectInteraction">disconnect</button>
             </div>
         </div>
 
