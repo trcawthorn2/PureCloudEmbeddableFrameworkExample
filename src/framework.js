@@ -7,7 +7,8 @@ window.Framework = {
             'mypurecloud.com': '',
             'mypurecloud.ie': '',
             'mypurecloud.com.au': '',
-            'mypurecloud.jp': ''
+            'mypurecloud.jp': '',
+            'mypurecloud.de': ''
         },
         customInteractionAttributes: ['PT_URLPop', 'PT_SearchValue', 'PT_TransferContext'],
         settings: {
@@ -17,7 +18,8 @@ window.Framework = {
             enableTransferContext: true,
             hideCallLogSubject: true,
             hideCallLogContact: false,
-            hideCallLogRelation: false
+            hideCallLogRelation: false,
+            searchTargets: ['people', 'queues', 'frameworkcontacts']
         }
     },
 
