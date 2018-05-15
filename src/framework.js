@@ -36,6 +36,12 @@ window.Framework = {
                 callback: function (category, data) {
                     window.parent.postMessage(JSON.stringify({type:"userActionSubscription", data:{category:category, data:data}}) , "*");
                 }  
+            },
+            {
+                type: 'Notification', 
+                callback: function (category, data) {
+                    window.parent.postMessage(JSON.stringify({type:"notificationSubscription", data:{category:category, data:data}}) , "*");
+                }  
             }
         ]);
 

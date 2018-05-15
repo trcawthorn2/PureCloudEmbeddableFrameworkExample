@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded',function(){
                 document.getElementById("interactionSubscriptionPayload").value = event.data;
             } else if(message.type == "userActionSubscription"){
                 document.getElementById("userActionSubscriptionPayload").value = event.data;
+            } else if(message.type == "notificationSubscription"){
+                document.getElementById("notificationSubscriptionPayload").value = event.data;
             } else if(message.type == "contactSearch") {
                 document.getElementById("searchText").innerHTML = ": " + message.data.searchString;
                 sendContactSearch();

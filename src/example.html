@@ -4,7 +4,7 @@
 </head>
 <body>
     <div class="softphone">
-        <iframe id="softphone" allow="camera *; microphone *" src="https://apps.mypurecloud.com/crm/index.html?crm=framework-local-secure&color=dark"></iframe>
+        <iframe id="softphone" allow="camera *; microphone *" src="https://apps.mypurecloud.com/crm/index.html?crm=framework-local-secure&color=purple"></iframe>
     </div>
 
     <div class='content'>
@@ -47,7 +47,7 @@
             
             <div class="action">
                 <h4 class="actionName">User Status Update</h4>
-                <p>User.updateStatus allows status management</p>
+                <p>User.updateStatus allows for status management between purecloud and the third party system</p>
                 <select id='statusDropDown'>
                     <option value="AVAILABLE">Available</option>
                     <option value="AWAY">Away</option>
@@ -98,6 +98,11 @@
                 <h4 class="subscriptionName">Type: UserAction</h4>
                 <p>Subscribing for userAction events allow you align the agents ui outside of the embedable framework with their current task.</p>
                 <textarea id="userActionSubscriptionPayload" rows="5"></textarea>        
+            </div>
+            <div class="subscription">
+                <h4 class="subscriptionName">Type: Notification</h4>
+                <p>Subscribing for notification events allow for contextual information such as interaction selection changed</p>
+                <textarea id="notificationSubscriptionPayload" rows="5"></textarea>        
             </div>
         </div>
 
