@@ -19,7 +19,11 @@ window.Framework = {
             hideCallLogSubject: true,
             hideCallLogContact: false,
             hideCallLogRelation: false,
-            searchTargets: ['people', 'queues', 'frameworkcontacts']
+            searchTargets: ['people', 'queues', 'frameworkcontacts'],
+            theme: {
+                primary: '#d4cebd',
+                text: '#123'
+            }
         }
     },
 
