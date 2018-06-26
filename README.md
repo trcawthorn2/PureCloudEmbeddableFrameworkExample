@@ -28,12 +28,6 @@ open web browser to https://localhost/example.html
 
 ```
 #### Query Strings ####
-You can change the styling by using the color param with one of the following options (red, blue, lightblue, darkblue, yellow, orange, green, dark, purple, lightgrey, darkgrey, genesys)
-```
-https://apps.mypurecloud.com/crm/index.html?color=red
-https://apps.mypurecloud.com/crm/index.html?color=blue
-```
-
 You can run locally using http or https using the following paramaters.
 ```
 https://apps.mypurecloud.com/crm/index.html?crm=framework-local-secure
