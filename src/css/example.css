@@ -77,3 +77,12 @@ textarea {
     width: 100px;
     overflow: hidden;
 }
+
+.views {
+    width: 100px;
+    overflow: hidden;
+}
+
+#updateAudioConfiguration {
+    margin-top: 10px;
+}

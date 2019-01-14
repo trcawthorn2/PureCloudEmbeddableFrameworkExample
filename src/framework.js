@@ -68,6 +68,10 @@ window.Framework = {
                     window.PureCloud.User.updateStatus(message.data);
                 }else if(message.type == "updateInteractionState"){
                     window.PureCloud.Interaction.updateState(message.data);
+                }else if(message.type == "setView"){
+                    window.PureCloud.User.setView(message.data);
+                }else if(message.type == "updateAudioConfiguration"){
+                    window.PureCloud.User.Notification.setAudioConfiguration(message.data);
                 }
             }
 

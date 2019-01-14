@@ -8,7 +8,14 @@ document.addEventListener('DOMContentLoaded',function(){
     document.getElementById('pickupInteraction').addEventListener("click", updateInteractionState);
     document.getElementById('securePuaseInteraction').addEventListener("click", updateInteractionState);
     document.getElementById('disconnectInteraction').addEventListener("click", updateInteractionState);
+    document.getElementById('updateAudioConfiguration').addEventListener("click", updateAudioConfiguration);
     
+    document.getElementById('view-interactionList').addEventListener("click", setView);
+    document.getElementById('view-calllog').addEventListener("click", setView);
+    document.getElementById('view-newInteraction').addEventListener("click", setView);
+    document.getElementById('view-callback').addEventListener("click", setView);
+    document.getElementById('view-settings').addEventListener("click", setView);
+
     window.addEventListener("message", function(event) {
         var message = JSON.parse(event.data);
         if(message){
@@ -98,4 +105,33 @@ document.addEventListener('DOMContentLoaded',function(){
         }), "*");
     }
 
+    function updateAudioConfiguration(){
+        console.log('Update Audio Configuration');
+        var payload = {
+            call: document.getElementById('audio-call').checked,
+            chat: document.getElementById('audio-chat').checked,
+            email: document.getElementById('audio-email').checked,
+            callback: document.getElementById('audio-callback').checked,
+            messaging: document.getElementById('audio-messaging').checked
+        }
+        document.getElementById("softphone").contentWindow.postMessage(JSON.stringify({
+            type: 'updateAudioConfiguration',
+            data: payload
+        }), "*");
+    }
+
+
+    function setView(event) {
+        console.log('process view update');
+        let payload = {
+            type:"main", 
+            view: {
+                name:event.target.outerText
+            }
+        };
+        document.getElementById("softphone").contentWindow.postMessage(JSON.stringify({
+            type: 'setView',
+            data: payload
+        }), "*");
+    }
 })

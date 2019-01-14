@@ -57,6 +57,34 @@
             </div>
             
             <div class="action">
+                <h4 class="actionName">User Set View</h4>
+                <p>User.setView allows for updating of the users view. Available views: interactionList, calllog, newInteraction, callback, settings</p>
+                <button class='views' id="view-interactionList">interactionList</button><button class='views' id="view-calllog">calllog</button><button class='views' id="view-newInteraction">newInteraction</button><button class='views' id="view-callback">callback</button><button class='views' id="view-settings">settings</button>
+            </div>
+
+            <div class="action">
+                <h4 class="actionName">User Noftification Audio Configuration</h4>
+                <p>User.Notification.setAudioConfiguration allows for granular controles over which interaction types will play an audible alert while the interaction is alerting</p>
+                <span>
+                        <input type="checkbox" id="audio-call" value="call" checked>Call
+                </span>
+                <span>
+                        <input type="checkbox" id="audio-email" value="email" checked>Email
+                </span>
+                <span>
+                        <input type="checkbox" id="audio-callback" value="callback" checked>Callback
+                </span>
+                <span>
+                        <input type="checkbox" id="audio-chat" value="chat" checked>Chat
+                </span>
+                <span>
+                        <input type="checkbox" id="audio-messaging" value="messaging" checked>Messaging
+                </span>
+                </br>
+                <button id="updateAudioConfiguration">Save</button>
+            </div>
+
+            <div class="action">
                 <h4 class="actionName">Interaction State Update</h4>
                 <p>Interaction.updateState allows for updating of the interaction state, enableing deeper integration into pickup, disconnect, hold, mute, and secure pause.</p>
                 <button class='callControl' id="pickupInteraction">pickup</button><button class='callControl' id="securePuaseInteraction">securePause</button><button class='callControl' id="disconnectInteraction">disconnect</button>
