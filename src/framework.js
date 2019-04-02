@@ -2,7 +2,7 @@ var contactSearchCallback;
 
 window.Framework = {
     config: {
-        name:"testApp",
+        name:"ExampleGitHubApp",
         clientIds: {
             'mypurecloud.com': '',
             'mypurecloud.ie': '',
