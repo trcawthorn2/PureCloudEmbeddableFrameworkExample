@@ -50,31 +50,36 @@ window.Framework = {
         ]);
 
         window.addEventListener("message", function(event) {
-            var message = JSON.parse(event.data);
-            if(message){
-                if(message.type == "clickToDial"){
-                    window.PureCloud.clickToDial(message.data);
-                } else if(message.type == "addAssociation"){
-                    window.PureCloud.addAssociation(message.data);
-                }else if(message.type == "addAttribute"){
-                    window.PureCloud.addCustomAttributes(message.data);
-                }else if(message.type == "addTransferContext"){
-                    window.PureCloud.addTransferContext(message.data);
-                }else if(message.type == "sendContactSearch"){
-                    if(contactSearchCallback) {
-                        contactSearchCallback(message.data);
+            try {
+                var message = JSON.parse(event.data);
+                if(message){
+                    if(message.type == "clickToDial"){
+                        window.PureCloud.clickToDial(message.data);
+                    } else if(message.type == "addAssociation"){
+                        window.PureCloud.addAssociation(message.data);
+                    }else if(message.type == "addAttribute"){
+                        window.PureCloud.addCustomAttributes(message.data);
+                    }else if(message.type == "addTransferContext"){
+                        window.PureCloud.addTransferContext(message.data);
+                    }else if(message.type == "sendContactSearch"){
+                        if(contactSearchCallback) {
+                            contactSearchCallback(message.data);
+                        }
+                    }else if(message.type == "updateUserStatus"){
+                        window.PureCloud.User.updateStatus(message.data);
+                    }else if(message.type == "updateInteractionState"){
+                        window.PureCloud.Interaction.updateState(message.data);
+                    }else if(message.type == "setView"){
+                        window.PureCloud.User.setView(message.data);
+                    }else if(message.type == "updateAudioConfiguration"){
+                        window.PureCloud.User.Notification.setAudioConfiguration(message.data);
+                    }else if(message.type == "sendCustomNotification"){
+                        window.PureCloud.User.Notification.notifyUser(message.data);
                     }
-                }else if(message.type == "updateUserStatus"){
-                    window.PureCloud.User.updateStatus(message.data);
-                }else if(message.type == "updateInteractionState"){
-                    window.PureCloud.Interaction.updateState(message.data);
-                }else if(message.type == "setView"){
-                    window.PureCloud.User.setView(message.data);
-                }else if(message.type == "updateAudioConfiguration"){
-                    window.PureCloud.User.Notification.setAudioConfiguration(message.data);
                 }
+            } catch {
+                //ignore if you can not parse the payload into JSON
             }
-
         });
     },
     screenPop: function (searchString, interaction) {

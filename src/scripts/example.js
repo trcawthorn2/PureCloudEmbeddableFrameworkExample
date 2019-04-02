@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded',function(){
     document.getElementById('securePuaseInteraction').addEventListener("click", updateInteractionState);
     document.getElementById('disconnectInteraction').addEventListener("click", updateInteractionState);
     document.getElementById('updateAudioConfiguration').addEventListener("click", updateAudioConfiguration);
+    document.getElementById('sendCustomNotification').addEventListener("click", sendCustomNotification);
     
     document.getElementById('view-interactionList').addEventListener("click", setView);
     document.getElementById('view-calllog').addEventListener("click", setView);
@@ -131,6 +132,18 @@ document.addEventListener('DOMContentLoaded',function(){
         };
         document.getElementById("softphone").contentWindow.postMessage(JSON.stringify({
             type: 'setView',
+            data: payload
+        }), "*");
+    }
+
+    function sendCustomNotification(){
+        console.log('Send Custom User Notification');
+        var payload = {
+            message: document.getElementById('customNotificationMessage').value,
+            type: document.getElementById('notificationType').value  
+        };
+        document.getElementById("softphone").contentWindow.postMessage(JSON.stringify({
+            type: 'sendCustomNotification',
             data: payload
         }), "*");
     }

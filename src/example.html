@@ -89,6 +89,19 @@
                 <p>Interaction.updateState allows for updating of the interaction state, enableing deeper integration into pickup, disconnect, hold, mute, and secure pause.</p>
                 <button class='callControl' id="pickupInteraction">pickup</button><button class='callControl' id="securePuaseInteraction">securePause</button><button class='callControl' id="disconnectInteraction">disconnect</button>
             </div>
+
+            <div class="action">
+                <h4 class="actionName">Custom User Notification</h4>
+                <p>User.Notification.notifyUser allows for showing custom messages to the user.</p>
+                <input id="customNotificationMessage" value='This is a message!'>
+                <select id='notificationType'>
+                    <option value="INFO">Info</option>
+                    <option value="SUCCESS">Success</option>
+                    <option value="WARNING">Warning</option>
+                    <option value="ERROR" selected=true>Error</option>
+                  </select>
+                <button id="sendCustomNotification">Send Data</button>
+            </div>
         </div>
 
         <div class="events">
