@@ -140,7 +140,8 @@ document.addEventListener('DOMContentLoaded',function(){
         console.log('Send Custom User Notification');
         var payload = {
             message: document.getElementById('customNotificationMessage').value,
-            type: document.getElementById('notificationType').value  
+            type: document.getElementById('notificationType').value,  
+            timeout: document.getElementById('notificationTimeout').value
         };
         document.getElementById("softphone").contentWindow.postMessage(JSON.stringify({
             type: 'sendCustomNotification',
